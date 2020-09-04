@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <div class="container" id="containerLogin">
+        <form class="form" id="loginForm"> 
+            <label>Username or Email</label>
+            <label for="loginName"></label>
+            <input id="loginName" type="text" name="uname" class="input" required>
+            <label>Password</label>
+            <label for="loginPassword"></label>
+            <input id="loginPassword" type="text" name="pass" class="input" required>
+            <div style="display: flex; justify-content: space-around; width: 200px;">
+                <label for="loginButton"></label>
+                <button class="button" id="loginButton" type="submit">Log In</button>
+                <label for="registrButton"></label>
+                <button class="button" id="registrButton" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+   <script src="js/index.js"></script>
+</body>
+</html>
