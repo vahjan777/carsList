@@ -1,10 +1,10 @@
-const openCarList = document.addEventListener('openCarList'),
-    openAddCar = document.addEventListener('openAddCar');
+const openCarList = document.getElementById('openCarList'),
+    openAddCar = document.getElementById('openAddCar');
 
     openAddCar.addEventListener('click', ()=> {
-        location.assign('');
+        location.assign('../addNewCar/addNewCar.html');
     });
 
     openCarList.addEventListener('click', ()=> {
-        location.assign('');
+        location.assign('../carsList/carsList.html');
     });

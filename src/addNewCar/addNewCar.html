@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Car</title>
+    <link href="addNewCar.css" rel="stylesheet">
+</head>
+<body>
+<div class="AddCarWindow">
+    <form>
+        <div>
+            <label>Brand</label>
+            <label> <input type="text" id="addBrand" required> </label>
+            <label> Date </label>
+            <label> <input type="text" id="addDate" required> </label>
+            <label>Transmission </label>
+            <label> <input type="text" id="addTransmission" required> </label>
+        </div>
+        <div>
+            <label> Model </label>
+            <label> <input type="text" id="addModel" required> </label>
+            <label> Class </label>
+            <label> <input type="text" id="addClass" required> </label>
+            <label> HP </label>
+            <label> <input type="text" id="addHP" required> </label>
+        </div>
+    </form>
+    <button type="button" id="createNewCar"> Create </button>
+</div>
+<script type="module" src="../js/addNewCar.js"></script>
+</body>
+</html>

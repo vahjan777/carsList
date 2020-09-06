@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars List</title>
+    <link href="carsList.css" rel="stylesheet">
+</head>
+<body>
+<div id="container" style="margin-top: 20px">
+    <div style="display: flex; height: 260px">
+        <div class="table">
+            <div id="brandCont" draggable="true" class="drag" style="text-align: center; width: 370px">
+                <div class="" style="background-color: #1963a3">Brand</div>
+                <div id="brand"></div>
+            </div>
+
+            <div id="modelCont" draggable="true" class="drag" style="margin-left: 5px; width: 370px; text-align: center">
+                <div class="" style="background-color: #e1ad19">Model</div>
+                <div id="model"></div>
+            </div>
+
+            <div id="dateCont" draggable="true" class="drag" style="margin-left: 5px; width: 50px; text-align: center">
+                <div class="" style="background-color: #fb3a5f">Date</div>
+                <div id="date"></div>
+            </div>
+
+            <div id="colorCont" draggable="true" class="drag" style="margin-left: 5px; width: 85px; text-align: center">
+                <div class="" style="background-color: #6d6c6c">Class</div>
+                <div id="class"></div>
+            </div>
+
+            <div id="transmissionCont" draggable="true" class="drag" style="margin-left: 5px; width: 100px; text-align: center">
+                <div class="" style="background-color: #919090">Transmission</div>
+                <div id="transmission"></div>
+            </div>
+
+            <div id="hpCont" draggable="true" class="drag" style="margin-left: 5px; width: 70px; text-align: center">
+                <div class="" style="background-color: #c7cac7">HP</div>
+                <div id="hp"></div>
+            </div>
+        </div>
+        <div id="delCont" style="margin-left: 5px; width: 60px; text-align: center">
+            <div class="" style="background-color: #58e958; text-align: center;" id="addNewCar">+</div>
+            <div id="del" ></div>
+        </div>
+
+    </div>
+    <div class="buttonsDiv">
+        <button type="button" id="back" class="button"> < </button>
+        <div id="buttonsDiv"></div>
+        <button type="button" id="next" class="button"> > </button>
+    </div>
+<!--    <div id="editCarWidow" style="margin-top: 30px; display: none">-->
+<!--        <div>-->
+<!--            <form>-->
+<!--                <label>Brand</label>-->
+<!--                <label> <input type="text" id="editBrand" > </label>-->
+<!--                <label> Date </label>-->
+<!--                <label> <input type="text" id="editDate"> </label>-->
+<!--                <label>Transmission </label>-->
+<!--                <label> <input type="text" id="editTransmission"> </label>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <form>-->
+<!--                <label> Model <input type="text" id="editModel"> </label>-->
+<!--                <label> Class <input type="text" id="editClass"> </label>-->
+<!--                <label> HP <input type="text" id="editHP"> </label>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <button type="button" id="editCarBtn" style="width: 35px; height: 25px;"> Edit </button>-->
+<!--    </div>-->
+
+</div>
+
+</div>
+<script type="module" src="../js/carsList.js"></script>
+</body>

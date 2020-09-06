@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.AddCarWindow {
+    margin-top: 30px;
+    background-color: #bbbbbb;
+    width:750px;
+    height: 250px;
+    border: #919090 solid 2px;
+    border-radius: 15px;
+}
+
+input {
+    height: 25px;
+}
+
+div {
+    margin-top: 30px;
+}
+button {
+    width: 60px;
+    height: 27px;
+    background-color: #2cd031;
+    margin-top: 50px;
+    margin-left: 345px;
+}
