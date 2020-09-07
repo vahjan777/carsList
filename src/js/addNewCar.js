@@ -5,8 +5,9 @@ const addModel = document.getElementById('addModel');
 const addClass = document.getElementById('addClass');
 const addHP = document.getElementById('addHP');
 const createNewCar = document.getElementById('createNewCar');
+const formAddWindow = document.getElementById('formAddWindow');
 
-createNewCar.addEventListener('click', createNew);
+formAddWindow.addEventListener('submit', createNew);
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -36,7 +37,8 @@ function resetValueAdd() {
     addHP.value = '';
 }
 
-function createNew() {
+function createNew(e) {
+    e.preventDefault();
     if(id == null || id == undefined) {
         const newCarObj = {};
         newCarObj.Brand = addBrand.value;

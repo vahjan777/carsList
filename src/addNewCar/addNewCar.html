@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="AddCarWindow">
-    <form>
+    <form id="formAddWindow">
         <div>
             <label>Brand</label>
             <label> <input type="text" id="addBrand" required> </label>
@@ -24,8 +24,9 @@
             <label> HP </label>
             <label> <input type="text" id="addHP" required> </label>
         </div>
+        <button type="submit" id="createNewCar"> Create </button>
     </form>
-    <button type="button" id="createNewCar"> Create </button>
+    
 </div>
 <script type="module" src="../js/addNewCar.js"></script>
 </body>
