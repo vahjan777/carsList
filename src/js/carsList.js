@@ -1,7 +1,7 @@
 import {auto} from "../carsJson/autoJson.js";
 
 
-if(localStorage.getItem('cars')) {
+if(!localStorage.getItem('cars')) {
     const autoArrId = auto.map((el) => {
         return el;
     });
@@ -10,14 +10,6 @@ if(localStorage.getItem('cars')) {
 }
 
 const addNewCar = document.getElementById('addNewCar');
-// const editBrand = document.getElementById('editBrand');
-// const editDate = document.getElementById('editDate');
-// const editTransmission = document.getElementById('editTransmission');
-// const editModel = document.getElementById('editModel');
-// const editClass = document.getElementById('editClass');
-// const editHP = document.getElementById('editHP');
-// const editCarBtn = document.getElementById('editCarBtn');
-
 const brand = document.getElementById('brand');
 const model = document.getElementById('model');
 const date = document.getElementById('date');
@@ -31,6 +23,11 @@ let getCars = JSON.parse(localStorage.getItem('cars'));
 let btnNum = 0;
 let getTableArr;
 let numOfTables = Math.ceil(getCars.length / 10);
+
+const mySearch = document.getElementById('mySearch');
+const searchForm = document.getElementById('searchForm');
+let resultSearch;
+
 
 function createSlice() {
     let slice1,
@@ -46,7 +43,6 @@ function createSlice() {
     clearTable();
     getTableArr.forEach((el) => createTableBody(el));
     initDeleteListeners();
-    // clickEditBtn()
     initPaging();
 }
 
@@ -78,9 +74,6 @@ function createTableBody(el) {
     boxHP.innerHTML = el.Horsepower + 'hp';
     const BOXEDITDELETE = document.createElement('div');
     BOXEDITDELETE.classList.add('boxEditDelete');
-    // const BOXEDIT = document.createElement('div');
-    // BOXEDIT.setAttribute('id', el.id);
-    // BOXEDIT.innerHTML = '<i><img id="1" src="../svg/edit.svg" style="width: 12px" alt=""></i>';
     const edits = document.createElement('div');
     edits.setAttribute('id', el.id);
     edits.innerHTML = '<i><img id="3" src="../svg/edit.svg" style="width: 12px" alt=""></i>';
@@ -100,7 +93,6 @@ function createTableBody(el) {
     CLASS.appendChild(boxClass);
     transmission.appendChild(boxTransmission);
     hp.appendChild(boxHP);
-    // BOXEDITDELETE.appendChild(BOXEDIT);
     BOXEDITDELETE.appendChild(edits);
     BOXEDITDELETE.appendChild(boxDelete);
     del.appendChild(BOXEDITDELETE);
@@ -224,106 +216,18 @@ addNewCar.addEventListener('click', () => {
     location.assign('../addNewCar/addNewCar.html');
 })
 
+// search
 
+searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    resultSearch = filterByValue(getCars, mySearch.value);
+    console.log(resultSearch);
+})
 
-// createNewCar.addEventListener('click', () => {
-//     // const newCarObj = {};
-//     // newCarObj.Brand = addBrand.value;
-//     // newCarObj.Date = addDate.value;
-//     // newCarObj.Transmission = addTransmission.value;
-//     // newCarObj.Model = addModel.value;
-//     // newCarObj.CLASS = addClass.value;
-//     // newCarObj.Horsepower = addHP.value;
-//     // newCarObj.id = Math.floor(Math.random() * 999999);
-//     // console.log(newCarObj);
-//
-//     getCars.unshift(newCarObj);
-//     localStorage.setItem('cars', JSON.stringify(getCars));
-//     numOfTables = Math.ceil(getCars.length / 10);
-//     createSlice();
-//     initPaging();
-//
-// })
-
-// function createNewCar (newCarObj) {
-//
-//     numOfTables = Math.ceil(getCars.length / 10);
-//     createSlice();
-//     initPaging();
-//
-// }
-
-//edit
-
-//
-// open edit window
-// let editId = null;
-// const editCarWindow = document.getElementById('editCarWidow');
-//
-// function clickEditBtn() {
-//     const deleteImg = document.querySelectorAll('img');
-//     deleteImg.forEach((el) => {
-//
-//         if (el.id === '1') {
-//             el.addEventListener('click', () => {
-//                 const getDivId = el.closest('div');
-//                 let editDiv;
-//                 for (let el of getCars) {
-//                     if (el.id === +getDivId.id) {
-//                         editDiv = el;
-//                         break
-//                     }
-//                 }
-//                 editCarWindow.style.display = 'block';
-//                 editBrand.value = editDiv.Brand;
-//                 editModel.value = editDiv.Model;
-//                 editDate.value = editDiv.Date;
-//                 editClass.value = editDiv.Class;
-//                 editTransmission.value = editDiv.Transmission;
-//                 editHP.value = editDiv.Horsepower;
-//                 editId = editDiv.id;
-//             })
-//         }
-//     })
-// }
-// //update
-//
-//
-//
-// editCarBtn.addEventListener('click', editCar);
-//
-// function editCar() {
-//
-//     const editObj = {};
-//     editObj.Brand = editBrand.value;
-//     editObj.Model = editModel.value;
-//     editObj.Date = editDate.value;
-//     editObj.Class = editClass.value;
-//     editObj.Transmission = editTransmission.value;
-//     editObj.Horsepower = editHP.value;
-//     editObj.id = editId;
-//
-//
-//     for(let i in getCars) {
-//         if(getCars[i].id === editObj.id) {
-//             getCars[i] = editObj;
-//
-//             localStorage.setItem('cars', JSON.stringify(getCars));
-//             resetValueEdit();
-//             createSlice(btnNum);
-//             break;
-//         }
-//
-//     }
-// }
-//
-// function resetValueEdit() {
-//     editCarWindow.style.display = 'none';
-//     editBrand.value = '';
-//     editDate.value = '';
-//     editTransmission.value = '';
-//     editModel.value = '';
-//     editClass.value = '';
-//     editHP.value = '';
-//
-// }
+function filterByValue(array, string) {
+    return array.filter(o => {
+        return Object.keys(o).some(k => {
+            if(typeof o[k] === 'string') return o[k].toLowerCase().includes(string.toLowerCase());
+        });
+    });
+}
