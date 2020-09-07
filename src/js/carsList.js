@@ -58,6 +58,8 @@ function clearTable() {
 
 createSlice();
 
+
+
 function createTableBody(el) {
     const boxBrand = document.createElement('div');
     boxBrand.innerHTML = el.Brand;
