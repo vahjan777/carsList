@@ -19,17 +19,21 @@ const hp = document.getElementById('hp');
 const del = document.getElementById('del');
 
 const container = document.getElementById('container');
-let getCars = JSON.parse(localStorage.getItem('cars'));
+let allArray = JSON.parse(localStorage.getItem('cars'));
+let getCars = allArray;
 let btnNum = 0;
 let getTableArr;
-let numOfTables = Math.ceil(getCars.length / 10);
+let numOfTables;
 
 const mySearch = document.getElementById('mySearch');
 const searchForm = document.getElementById('searchForm');
 let resultSearch;
 
+createSlice(getCars);
 
-function createSlice() {
+function createSlice(arr) {
+    
+    numOfTables = Math.ceil(arr.length / 10);
     let slice1,
         slice2;
     if (btnNum) {
@@ -39,7 +43,7 @@ function createSlice() {
         slice1 = 0;
         slice2 = 10;
     }
-    getTableArr = getCars.slice(slice1, slice2);
+    getTableArr = arr.slice(slice1, slice2);
     clearTable();
     getTableArr.forEach((el) => createTableBody(el));
     initDeleteListeners();
@@ -56,7 +60,7 @@ function clearTable() {
     del.innerHTML = "";
 }
 
-createSlice();
+
 
 
 
@@ -115,13 +119,13 @@ function initPaging() {
 
 function buttonClick(e) {
     btnNum = e;
-    createSlice();
+    createSlice(getCars);
 }
 
 document.getElementById('back').addEventListener('click', () => {
     if (btnNum) {
         btnNum--;
-        createSlice();
+        createSlice(getCars);
     }
 });
 
@@ -129,7 +133,7 @@ document.getElementById('back').addEventListener('click', () => {
 document.getElementById('next').addEventListener('click', () => {
     if (btnNum < numOfTables - 1) {
         btnNum++;
-        createSlice();
+        createSlice(getCars);
     }
 })
 
@@ -151,19 +155,18 @@ function initDeleteListeners() {
                 deleteBtn.value = 'Delete';
                 deleteBtn.addEventListener('click', () => {
                     const closestTr = el.closest('div');
-                    getCars = getCars.filter((obj) => {
-                        return obj.id !== +closestTr.id;
-                    });
+                    allArray = deleteObj(allArray,closestTr);
+                    getCars = deleteObj(getCars, closestTr);
 
-                    localStorage.setItem('cars', JSON.stringify(getCars));
+                    localStorage.setItem('cars', JSON.stringify(allArray));
                     numOfTables = Math.ceil(getCars.length / 10);
                     initPaging();
-                    createSlice();
+                    createSlice(getCars);
                     if (getTableArr.length === 0) {
                         btnNum--;
-                        createSlice();
+                        createSlice(getCars);
                     } else {
-                        createSlice();
+                        createSlice(getCars);
                     }
                     let deleteWindow = document.getElementsByClassName('deleteWindow');
                     while (deleteWindow.length > 0) deleteWindow[0].remove();
@@ -187,6 +190,13 @@ function initDeleteListeners() {
         }
     })
 
+}
+
+function deleteObj(arr, closestTr) {
+    arr = arr.filter((obj) => {
+        return obj.id !== +closestTr.id;
+    })
+    return arr;
 }
 
 initDeleteListeners();
@@ -222,8 +232,15 @@ addNewCar.addEventListener('click', () => {
 
 searchForm.addEventListener('submit', e => {
     e.preventDefault();
+    if(mySearch.value) {
     resultSearch = filterByValue(getCars, mySearch.value);
     console.log(resultSearch);
+    getCars = resultSearch;
+    createSlice(getCars);
+    } else {
+        getCars = JSON.parse(localStorage.getItem('cars'));
+        createSlice(getCars);
+    }
 })
 
 function filterByValue(array, string) {
