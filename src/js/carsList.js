@@ -1,4 +1,4 @@
-import {auto} from "../carsJson/autoJson.js";
+import {auto} from "../Jsons/autoJson.js";
 
 
 if(!localStorage.getItem('cars')) {

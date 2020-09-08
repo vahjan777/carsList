@@ -6,22 +6,32 @@
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
+
     <div class="container" id="containerLogin">
         <form class="form" id="loginForm"> 
-            <label>Username or Email</label>
+            <label data-localize="userName">Username or Email</label>
             <label for="loginName"></label>
             <input id="loginName" type="text" name="uname" class="input" required>
-            <label>Password</label>
+            <label data-localize="password">Password</label>
             <label for="loginPassword"></label>
             <input id="loginPassword" type="text" name="pass" class="input" required>
             <div style="display: flex; justify-content: space-around; width: 200px;">
                 <label for="loginButton"></label>
-                <button class="button" id="loginButton" type="submit">Log In</button>
+                <button class="button" id="loginButton" type="submit" data-localize="login">Log In</button>
                 <label for="registrButton"></label>
-                <button class="button" id="registrButton" type="submit">Register</button>
+                <button class="button" id="registrButton" type="submit" data-localize="register">Register</button>
             </div>
         </form>
     </div>
-   <script src="js/index.js"></script>
+    <div style="margin-top: 100px;">
+        <form >          
+            <select id="lngSelect" name="leng">
+              <option value="eng">Eng</option>
+              <option value="rus">Рус</option>
+              <option value="arm">Հայ</option>
+            </select>
+        </form>
+    </div>
+   <script type="module" src="js/index.js"></script>
 </body>
 </html>
