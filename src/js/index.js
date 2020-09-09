@@ -36,23 +36,7 @@ REGISTRBUTTON.addEventListener('click', (e)=> {
     location.assign('register/register.html');
 })
 
-
-// lngSelect.addEventListener('change', changeLng)
-
-// async function changeLng() {
-//     debugger
-//     console.log(lngSelect.value);
-//     switch (lngSelect.value) {
-//         case 'ru' :
-//             import localize from '../Jsons.loginRu.json';
-//             const localizecontrol = document.querySelectorAll('[date-localize}');
-//             localizecontrol.forEach(tag => {
-//                 tag.innerHTML = localize[tag.dataseet.localize];
-//             })
-//             break;
-//     }
-// }
-
+//lng
 
 const select = document.getElementById('lngSelect'),
 translateControls = document.querySelectorAll('[data-localize]'),
@@ -72,5 +56,7 @@ function loadTranslate(locale) {
             })
         })
         localObj[locale] = null;
+        localStorage.setItem('lang',locale);
     }
 }
+

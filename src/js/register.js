@@ -4,6 +4,22 @@ const registerEmail = document.getElementById('registerEmail'),
     registerConfirmPassword = document.getElementById('registerConfirmPassword'),
     REGISTERFORM = document.getElementById('registerForm');
 
+    const select = document.getElementById('registerForm'),
+    translateControls = document.querySelectorAll('[data-localize]');
+    let translate = null;
+    
+    let locale = localStorage.getItem('lang');
+
+            import(`../Jsons/${locale}.js`).then(locale => {
+                translate = locale.default;
+                translateControls.forEach(tag => {
+                    tag.innerHTML = translate[tag.dataset.localize];
+                })
+            })
+
+        
+    
+
     REGISTERFORM.addEventListener('submit', register);
 
     function register(e) {
