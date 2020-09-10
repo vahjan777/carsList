@@ -5,9 +5,12 @@
     <title>Menu</title>
     <link href="./menu.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name = "google-signin-client_id" content = "950707095541-gqfm4kmda9b2bv7l10ll3qlf27mpvokq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
 <div class="container">
+    <button id="logOut" class="buttonLogOut" onclick="signOut()" >Log Out</button>
     <div style="display: flex; align-items: center; justify-content: space-around;margin-top: 25px;">
         <div id="openCarList">
             <i class="material-icons" style="font-size:50px; color: #3e989c;">assignment</i>
@@ -21,6 +24,6 @@
         <p>Add Car</p>
     </div>
 </div>    
-<script src="../js/menu.js"></script>
+<script src="../js/menu.js" ></script>
 </body>
 </html>

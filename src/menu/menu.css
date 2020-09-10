@@ -18,3 +18,15 @@ body {
     border-radius: 5px;
     background: rgb(236, 236, 236);
 }
+
+.buttonLogOut {
+    width: 90px;
+    height: 40px;
+    background-color: #f97878;
+    margin-left: 50px;
+    border: 1px solid #e83d3d;
+    border-radius: 9px;
+    margin-top: 10px;
+
+
+}
