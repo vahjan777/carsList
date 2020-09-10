@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>login</title>
     <link rel="stylesheet" href="styles/index.css">
-    <meta name = "google-signin-client_id" content = "950707095541-gqfm4kmda9b2bv7l10ll3qlf27mpvokq.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="950707095541-gqfm4kmda9b2bv7l10ll3qlf27mpvokq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
+
 <body>
 
     <div class="container" id="containerLogin">
-        <form class="form" id="loginForm"> 
+        <form class="form" id="loginForm">
             <label data-localize="userName">Username or Email</label>
             <label for="loginName"></label>
             <input id="loginName" type="text" name="uname" class="input" required>
@@ -22,21 +26,28 @@
                 <label for="registrButton"></label>
                 <button class="button" id="registrButton" type="submit" data-localize="register">Register</button>
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn" id="g-signin2" style="margin-top: 15px;" ></div>
+            <div class="g-signin2" data-onsuccess="onSignIn" id="g-signin2" style="margin-top: 15px;"></div>
+
+            <fb:login-button scope="public_profile,email" id="fb_login" onlogin="checkLoginState()">
+                facebook login
+            </fb:login-button>
+
 
         </form>
-
+        <img src="" id="img" />
+        <button onclick="logoutFb()">log out from fb</button>
     </div>
     <div style="margin-top: 100px;">
-        <form >          
+        <form>
             <select id="lngSelect" name="leng">
-              <option value="eng">Eng</option>
-              <option value="rus">Рус</option>
-              <option value="arm">Հայ</option>
+                <option value="eng">Eng</option>
+                <option value="rus">Рус</option>
+                <option value="arm">Հայ</option>
             </select>
         </form>
     </div>
-   <script type="module" src="js/index.js"></script>
-   <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="module" src="js/index.js"></script>
+
 </body>
+
 </html>
