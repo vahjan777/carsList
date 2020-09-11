@@ -1,3 +1,6 @@
+import CAR from './getCar.js';
+
+
 const addBrand = document.getElementById('addBrand');
 const addDate = document.getElementById('addDate');
 const addTransmission = document.getElementById('addTransmission');
@@ -38,16 +41,8 @@ function resetValueAdd() {
 
 function createNew() {
     if(id == null || id == undefined) {
-        const newCarObj = {};
-        newCarObj.Brand = addBrand.value;
-        newCarObj.Date = addDate.value;
-        newCarObj.Transmission = addTransmission.value;
-        newCarObj.Model = addModel.value;
-        newCarObj.Class = addClass.value;
-        newCarObj.Horsepower = addHP.value;
-        newCarObj.id = Math.floor(Math.random() * 999999);
+        const newCarObj = new CAR(addBrand.value, addDate.value, addTransmission.value, addModel.value, addClass.value, addHP.value, Math.floor(Math.random() * 999999));
         console.log(newCarObj);
-
         cars.unshift(newCarObj);
     }
     else
@@ -61,7 +56,6 @@ function createNew() {
         cars[carObjectIndex].Horsepower = addHP.value;
     }
     resetValueAdd();
-
     localStorage.setItem('cars', JSON.stringify(cars));
     location.assign('../carsList/carslist.html');
 }
