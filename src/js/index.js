@@ -48,14 +48,14 @@ select.onchange = (event) => loadTranslate(event.target.value);
 
 function loadTranslate(locale) {
     if (!localObj[locale]) {
-        localObj[locale] = true;
+        // localObj[locale] = true;
         import(`../Jsons/${locale}.js`).then(locale => {
             translate = locale.default;
             translateControls.forEach(tag => {
                 tag.innerHTML = translate[tag.dataset.localize];
             })
         })
-        localObj[locale] = null;
+        // localObj[locale] = null;
         localStorage.setItem('lang', locale);
     }
 }
