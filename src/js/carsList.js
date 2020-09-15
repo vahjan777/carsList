@@ -1,4 +1,6 @@
 import {auto} from "../Jsons/autoJson.js";
+import Language from "./lang.sevice.js";
+import Load from "./load.js";
 
 
 if(!localStorage.getItem('cars')) {
@@ -29,6 +31,12 @@ const mySearch = document.getElementById('mySearch');
 const searchForm = document.getElementById('searchForm');
 let resultSearch;
 
+const load = new Load();
+load.subscribe(()=> {
+    initDeleteListeners();
+    initPaging();
+});
+
 createSlice(getCars);
 
 function createSlice(arr) {
@@ -46,8 +54,9 @@ function createSlice(arr) {
     getTableArr = arr.slice(slice1, slice2);
     clearTable();
     getTableArr.forEach((el) => createTableBody(el));
-    initDeleteListeners();
-    initPaging();
+    // initDeleteListeners();
+    // initPaging();
+    load.fire();
 }
 
 function clearTable() {
@@ -59,7 +68,6 @@ function clearTable() {
     hp.innerHTML = "";
     del.innerHTML = "";
 }
-
 
 
 
@@ -199,7 +207,7 @@ function deleteObj(arr, closestTr) {
     return arr;
 }
 
-initDeleteListeners();
+// initDeleteListeners();
 
 //drag and drop
 

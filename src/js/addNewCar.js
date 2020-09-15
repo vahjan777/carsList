@@ -42,7 +42,6 @@ function resetValueAdd() {
 function createNew() {
     if(id == null || id == undefined) {
         const newCarObj = new CAR(addBrand.value, addDate.value, addTransmission.value, addModel.value, addClass.value, addHP.value, Math.floor(Math.random() * 999999));
-        console.log(newCarObj);
         cars.unshift(newCarObj);
     }
     else
